@@ -1,0 +1,7 @@
+adapter: postgresql
+encoding: unicode
+database: sql_task_checker
+pool: 5
+host: localhost
+username: sql_checker
+password: sql_checker
