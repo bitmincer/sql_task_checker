@@ -18,8 +18,8 @@ describe SqlTaskChecker do
       end
     end
 
-    context 'wrong table' do
-      let(:user_sql) { 'SELECT * FROM article;' }
+    context 'wrong query' do
+      let(:user_sql) { 'SELECT * FROM articles WHERE id > 1;' }
 
       it 'is invalid' do
         expect(subject[:result]).to eq false
@@ -43,7 +43,7 @@ describe SqlTaskChecker do
     end
 
     context 'permission violation' do
-      let(:user_sql) { "INSERT INTO articles(article_name, article_desc) VALUES ('name', 'opis');" }\
+      let(:user_sql) { "INSERT INTO articles(name) VALUES ('name');" }\
 
       it 'is invalid' do
         expect(subject[:result]).to eq false
