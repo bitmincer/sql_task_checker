@@ -2,6 +2,10 @@ require_relative '../sql_task_checker'
 
 describe SqlTaskChecker do
   describe '#check' do
+    before do
+      allow(SqlTaskChecker).to receive(:config).and_return(YAML.load_file('database.yml')['test'])
+    end
+
     let(:checker_sql) { 'SELECT * FROM articles;' }
 
     subject { described_class.check(checker_sql: checker_sql, user_sql: user_sql) }

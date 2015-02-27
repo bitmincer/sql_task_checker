@@ -1,4 +1,4 @@
-Wstępna konfiguracja
+### Wstępna konfiguracja
 ```
 sudo -u postgres psql postgres
 ```
@@ -13,18 +13,13 @@ GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO sql_checker;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO sql_checker;
 ```
 
-Stworzenie bazy testowej
-
-```sql
-CREATE TABLE articles (
-  id bigserial primary key,
-  name varchar(20) NOT NULL
-);
-INSERT INTO articles (name) VALUES ('name_1');
-INSERT INTO articles (name) VALUES ('name_2');
+### Kofiguracja bazy testowej
+```
+./prepare_test_database
 ```
 
-Po dodania tabeli do bazy trzeba wykonać z poziomu psql
+
+### Po dodania tabeli do bazy trzeba wykonać z poziomu psql
 
 ```sql
 \c sql_task_checker;

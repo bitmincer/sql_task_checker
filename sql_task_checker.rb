@@ -3,10 +3,7 @@ require 'yaml'
 
 class SqlTaskChecker
   class << self
-    attr_reader :config
-
     def check(checker_sql:, user_sql:)
-      @config = YAML.load_file('database.yml')
       connection = establish_connection
 
       begin
@@ -30,6 +27,10 @@ class SqlTaskChecker
         password: config['password'],
         host:     config['host']
       )
+    end
+
+    def config
+      @config ||= YAML.load_file('database.yml')['development']
     end
   end
 end
