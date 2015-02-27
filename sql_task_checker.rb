@@ -33,6 +33,3 @@ class SqlTaskChecker
     end
   end
 end
-
-# example:
-# puts SqlTaskChecker.check(checker_sql: 'SELECT * FROM articles;', user_sql: 'SELECT * FROM articles;')
