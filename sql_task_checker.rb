@@ -9,10 +9,16 @@ class SqlTaskChecker
       @config = YAML.load_file('database.yml')
       connection = establish_connection
 
-      checker_result = connection.exec(checker_sql).values
-      user_result = connection.exec(user_sql).values
+      begin
+        checker_result = connection.exec(checker_sql).values
+        user_result = connection.exec(user_sql).values
+      rescue PG::Error => pg_error
+        error_msg = pg_error.error
+      end
 
-      checker_result == user_result
+      result = checker_result == user_result
+
+      { result: result, error: error_msg }
     end
 
     private
