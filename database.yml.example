@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: sql_task_checker
+  pool: 5
+  host: localhost
+  username:
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: test_sql_task_checker
+  pool: 5
+  host: localhost
+  username: test_sql_checker
+  password: test_sql_checker

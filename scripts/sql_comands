@@ -1,0 +1,17 @@
+DROP DATABASE test_sql_task_checker;
+CREATE DATABASE test_sql_task_checker;
+
+CREATE USER test_sql_checker WITH ENCRYPTED PASSWORD 'test_sql_checker';
+GRANT CONNECT ON DATABASE test_sql_task_checker to test_sql_checker;
+\c test_sql_task_checker;
+
+CREATE TABLE articles (
+  id bigserial primary key,
+  name varchar(20) NOT NULL
+);
+INSERT INTO articles (name) VALUES ('name_1');
+INSERT INTO articles (name) VALUES ('name_2');
+
+GRANT USAGE ON SCHEMA public to test_sql_checker;
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO test_sql_checker;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO test_sql_checker;
